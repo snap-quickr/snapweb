@@ -3,5 +3,14 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>Shopo Web</display-name>
+  <servlet>
+      <servlet-name>Home</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>Home</servlet-name>
+      <url-pattern>*.jsp</url-pattern>
+   </servlet-mapping>
 </web-app>
