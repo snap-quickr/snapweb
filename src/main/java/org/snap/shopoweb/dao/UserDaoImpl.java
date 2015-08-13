@@ -32,11 +32,11 @@ public class UserDaoImpl implements UserDao {
 		String locationId=String.valueOf(p.getLocationId());
 		productTableName=productTableName.concat(locationId);
 
-		this.jdbcTemplate.update(this.user_product_insert,new Object[]{p.getProductId(),productTableName});
+	this.jdbcTemplate.update(this.user_product_insert,new Object[]{1,productTableName});
 
 		product_insert=product_insert.concat(productTableName);
-		product_insert=product_insert.concat(" values(?,?,?,?)");
-		this.jdbcTemplate.update(this.product_insert,new Object[]{p.getProductId(),p.getCategoryId(),p.getUrl(),p.getProductDetail()});
+		product_insert=product_insert.concat(" values(?,?,?,?,?,?,?)");
+		this.jdbcTemplate.update(this.product_insert,new Object[]{1,p.getCategoryId(),"abc",p.getLocationId(),p.getProductName(),p.getPrice(),p.getProductDetail()});
 	}
 	
 	public int getMaxUserId(){
