@@ -15,7 +15,7 @@
 <div id="main_container">
   <div class="top_bar">
     <div class="top_search">
-      <div class="search_text"><a href="#">Advanced Search</a></div>
+      <div class="search_text"><a href="asearch">Advanced Search</a></div>
       <input type="text" class="search_input" name="search" />
       <input type="image" src="images/search.gif" class="search_bt"/>
     </div>
@@ -261,4 +261,3 @@
 <!-- end of main_container -->
 </body>
 </html>
->>>>>>> origin/master:src/main/webapp/view/search.jsp
