@@ -1,5 +1,6 @@
 package org.snap.shopoweb.beans;
 
+
 public class Product {
 	
 	int productId;
@@ -7,7 +8,23 @@ public class Product {
 	int locationId;
 	String url;
 	String productDetail;
+	String productName;
+	int price;
 	
+	
+	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -46,3 +63,4 @@ public class Product {
 	
 
 }
+
