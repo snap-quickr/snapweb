@@ -80,7 +80,7 @@ public class UserDaoImpl implements UserDao {
 
 	public User getUser(String email){
 		String SQL="select * from user where userEmail=";
-		SQL=SQL.concat(email);
+		SQL=SQL.concat("'"+email+"'");
 		User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
 		return u;
 	}

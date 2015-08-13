@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-	Hello ${userId}
+<head>
+</head>
+<body>
+	Hello ${userName}
+</body>	
 </html>
