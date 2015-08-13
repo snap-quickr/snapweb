@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="org.snap.dao.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -262,4 +261,3 @@
 <!-- end of main_container -->
 </body>
 </html>
->>>>>>> origin/master:src/main/webapp/view/search.jsp
