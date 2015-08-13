@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
     
-    @RequestMapping("/home")
+    @RequestMapping("/search")
     public String homePage(ModelMap model){
 
-        model.addAttribute("message","Hello vivek");
-        return "Hello";
+        model.addAttribute("product","Hello vivek");
+        return "details";
     }
     
     @RequestMapping("/login")
     public String loginPage(ModelMap model){
         //model.addAttribute("toDo",DataContainer.getHm().get("login"));
-        return "Hello";
+        return "login";
     }
     
     @RequestMapping("/product")
@@ -38,5 +38,12 @@ public class MainController {
         //model.addAttribute("toDo",DataContainer.getHm().get("addpro"));
         return "Hello";
     }
+    @RequestMapping("/validate")
+    public String validateLogin(ModelMap model)
+    {
+    	
+    	return "home";
+    }
+    
 
 }
