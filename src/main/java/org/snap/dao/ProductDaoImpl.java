@@ -34,10 +34,6 @@ public class ProductDaoImpl implements ProductDao{
 
 
 	}
-<<<<<<< HEAD
-
-
-=======
 	
 	public Product selectProductByLocationAndProductId(int locationId, int productId){
 	    Product product = new Product();
@@ -54,6 +50,4 @@ public class ProductDaoImpl implements ProductDao{
 	    
 	    return product;
 	 }
->>>>>>> origin/master
-
 }

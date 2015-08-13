@@ -1,8 +1,20 @@
 package org.snap.shopoweb;
 
+
+/*import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
 
+import org.omg.CORBA.Request;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;*/
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,6 +50,22 @@ public class MainController {
         return "Hello";
     }
     
+    //@RequestMapping("/add.htm")
+   //public ModelAndView addPage(@ModelAttribute("user") User user) throws ServletException, IOException{
+    	/*ModelAndView model = new ModelAndView("add");
+    	ApplicationContext ac=new ClassPathXmlApplicationContext("beans.xml");
+    	//UserDapImpl u= UserDapImpl(ac.getBean("userDao"));
+    	user.setUserName(user.getUserName());
+    	user.setUserPassword(user.getUserPassword());
+    	user.setUserEmail(user.getUserEmail());
+    	user.setUserContact(user.getUserContact());
+    	
+    	
+    	u.insertUser(user);
+    	
+        return model;*/
+    //}
+
     @RequestMapping("/add")
     public String addPage(ModelMap model){
         //model.addAttribute("toDo",DataContainer.getHm().get("addpro"));
@@ -45,8 +73,7 @@ public class MainController {
     }
     @RequestMapping("/validate")
     public String validateLogin(ModelMap model)
-    {
-    	
+    {	
     	return "home";
     }
     
@@ -54,6 +81,5 @@ public class MainController {
     public ModelAndView showProduct(HttpServletRequest req, HttpServletResponse res){
     	return new ModelAndView("product");
     }
-    
 
 }
