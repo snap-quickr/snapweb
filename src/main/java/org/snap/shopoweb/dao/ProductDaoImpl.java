@@ -1,10 +1,9 @@
-package org.snap.dao;
+package org.snap.shopoweb.dao;
 
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import org.snap.dao.*;
+import org.snap.shopoweb.beans.*;
 
 public class ProductDaoImpl implements ProductDao{
 
@@ -32,8 +31,6 @@ public class ProductDaoImpl implements ProductDao{
         List<Product> products = (List<Product>) jdbcTemplate.query(SQL,new ProductMapper());
         return products;
     }
-
-
 	
 	public Product selectProductByLocationAndProductId(int locationId, int productId){
 	    Product product = new Product();

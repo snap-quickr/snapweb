@@ -1,4 +1,4 @@
-package org.snap.dao;
+package org.snap.shopoweb.beans;
 
 public class User {
 	

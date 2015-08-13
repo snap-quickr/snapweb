@@ -1,7 +1,9 @@
-package org.snap.dao;
+package org.snap.shopoweb;
 
 import java.util.List;
 
+import org.snap.shopoweb.dao.*;
+import org.snap.shopoweb.beans.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,9 +1,10 @@
-package org.snap.dao;
+package org.snap.shopoweb.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.snap.shopoweb.beans.Product;
 import org.springframework.jdbc.core.RowMapper;
 
 

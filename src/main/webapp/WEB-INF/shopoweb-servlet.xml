@@ -8,10 +8,6 @@
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-<<<<<<< HEAD:src/main/webapp/WEB-INF/shopoweb.xml
-   <context:component-scan base-package="org.snap.shopoweb" /> 
-
-=======
    <context:component-scan base-package="org.snap.shopoweb" />
    <context:annotation-config></context:annotation-config>
    
@@ -19,6 +15,5 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp"/>	
 	</bean>
-	
->>>>>>> origin/master:src/main/webapp/WEB-INF/shopoweb-servlet.xml
+
 </beans>

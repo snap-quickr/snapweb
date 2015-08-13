@@ -1,4 +1,6 @@
-package org.snap.dao;
+package org.snap.shopoweb.dao;
+
+import org.snap.shopoweb.beans.*;
 
 public interface UserDao {
 	

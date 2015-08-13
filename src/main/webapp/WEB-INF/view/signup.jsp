@@ -37,7 +37,7 @@
 </script>
 
 <h2>New User Register here</h2>
-<form method="POST" action="addUser.htm" onsubmit="return validate(this);">
+<form method="POST" action="home.htm" onsubmit="return validate(this);">
 	<table>
 		<tr>
 			<td>Name</td>

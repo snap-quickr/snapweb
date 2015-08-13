@@ -1,10 +1,8 @@
-package org.snap.dao;
+package org.snap.shopoweb.dao;
 
-import java.util.List;
-
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import org.snap.dao.*;
+import org.springframework.jdbc.core.*;
+import org.snap.shopoweb.beans.Product;
+import org.snap.shopoweb.beans.User;
 
 public class UserDaoImpl implements UserDao {
 
@@ -43,14 +41,20 @@ public class UserDaoImpl implements UserDao {
 	
 	public int getMaxUserId(){
 	    String sql = "select max(userId) from user";
-	    int id = jdbcTemplate.queryForObject(sql, Integer.class);
+	    int id;
+	    try{
+	        id = jdbcTemplate.queryForObject(sql, Integer.class);
+	    } catch (NullPointerException e){
+	        e.printStackTrace();
+	        return 0;
+	    }
 	    return id;
 	}
 
 	public void saveUser(User u) 
 	{
 		this.jdbcTemplate.update(this.user_insert,new Object[]{u.getUserId(),u.getUserName(),u.getUserEmail(),u.getUserPassword(),u.getUserContact()});
-
+		
 		String tableName="user_";
 		String id=String.valueOf(u.getUserId());
 		tableName=tableName.concat(id);

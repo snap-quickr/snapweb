@@ -1,4 +1,4 @@
-package org.snap.dao;
+package org.snap.shopoweb.beans;
 
 public class Product {
 	
@@ -7,8 +7,6 @@ public class Product {
 	int locationId;
 	String url;
 	String productDetail;
-	
-	
 	
 	public int getProductId() {
 		return productId;
