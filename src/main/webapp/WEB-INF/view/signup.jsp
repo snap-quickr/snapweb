@@ -1,4 +1,3 @@
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <script type="text/javascript">
 	function validate(form) {
@@ -63,4 +62,5 @@
 			<td colspan="2"><input type="submit" value="Submit" /></td>
 		</tr>
 	</table>
+	<input type="hidden" name="source" value="signup"/>
 </form>
