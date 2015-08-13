@@ -1,30 +1,35 @@
 package org.snap.shopoweb;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
     
-    @RequestMapping("/home")
+    @RequestMapping("/asearch")
     public String homePage(ModelMap model){
-
-        model.addAttribute("message","Hello vivek");
-        return "Hello";
+    	
+        model.addAttribute("product","Hello vivek");
+        return "details";
     }
     
     @RequestMapping("/login")
     public String loginPage(ModelMap model){
         //model.addAttribute("toDo",DataContainer.getHm().get("login"));
-        return "Hello";
+    	
+        return "login";
     }
     
     @RequestMapping("/product")
-    public String productPage(ModelMap model){
-       // model.addAttribute("toDo",DataContainer.getHm().get("search"));
-        return "Hello";
+    public ModelAndView productPage(ModelMap model){
+       return new ModelAndView("details");
     }
     
     @RequestMapping("/user")
@@ -38,5 +43,17 @@ public class MainController {
         //model.addAttribute("toDo",DataContainer.getHm().get("addpro"));
         return "Hello";
     }
+    @RequestMapping("/validate")
+    public String validateLogin(ModelMap model)
+    {
+    	
+    	return "home";
+    }
+    
+    @RequestMapping("/product")
+    public ModelAndView showProduct(HttpServletRequest req, HttpServletResponse res){
+    	return new ModelAndView("product");
+    }
+    
 
 }
