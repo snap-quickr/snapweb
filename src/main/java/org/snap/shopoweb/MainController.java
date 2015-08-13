@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
     
-    @RequestMapping("/search")
+    @RequestMapping("/asearch")
     public String homePage(ModelMap model){
-
+    	
         model.addAttribute("product","Hello vivek");
         return "details";
     }
@@ -19,6 +19,7 @@ public class MainController {
     @RequestMapping("/login")
     public String loginPage(ModelMap model){
         //model.addAttribute("toDo",DataContainer.getHm().get("login"));
+    	
         return "login";
     }
     
