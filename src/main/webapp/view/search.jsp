@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="org.snap.dao.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -112,7 +113,32 @@
         <div class="bottom_prod_box"></div>
         <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
       </div>
-      <% ArrayList<Product> result = (ArrayList<Product>)request.getAttribute("result"); %>
+      <% ArrayList<Product> result = (ArrayList<Product>)request.getAttribute("result"); 
+      	for(Product product:result){
+      		%>
+      		<div class="prod_box">
+        		<div class="top_prod_box"></div>
+		        <div class="center_prod_box">
+		          <div class="product_title"><a href="details.html"><%= product.getProductId() %></a></div>
+		          <div class="product_img"><a href="details.html"><img src="images/laptop.gif" alt="" border="0" /></a></div>
+		          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
+		        </div>
+        		<div class="bottom_prod_box"></div>
+        		<div class="prod_details_tab"> 
+        		<a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]">
+        			<img src="images/cart.gif" alt="" border="0" class="left_bt" />
+        		</a>
+        		<a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]">
+        			<img src="images/favs.gif" alt="" border="0" class="left_bt" />
+        		</a> 
+        		<a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]">
+        			<img src="images/favorites.gif" alt="" border="0" class="left_bt" />
+        		</a> 
+        		<a href="details.html" class="prod_details">details</a> </div>
+      		</div>
+      		<%
+      	}
+      %>
       <!-- <div class="prod_box">
         <div class="top_prod_box"></div>
         <div class="center_prod_box">
@@ -236,3 +262,4 @@
 <!-- end of main_container -->
 </body>
 </html>
+>>>>>>> origin/master:src/main/webapp/view/search.jsp
