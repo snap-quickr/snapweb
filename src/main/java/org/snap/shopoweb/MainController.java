@@ -10,7 +10,7 @@ public class MainController {
     
     @RequestMapping("/home")
     public String homePage(ModelMap model){
-        model.addAttribute("message","Hello Spring");
+        model.addAttribute("message","Hello vivek");
         return "Hello";
     }
     
