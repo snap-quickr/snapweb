@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import org.snap.dao.*;
+
+
 
 public class UserDaoImpl implements UserDao {
 
@@ -80,14 +83,18 @@ public class UserDaoImpl implements UserDao {
 	//		return null;
 	//	}
 
-	public User getUser(String userId)
+	public User getUser(String email)
 	{
 
-		String userTable="user_";
-		userTable=userTable.concat(userId);
+		String SQL="select * from user where userEmail=";
+
+		SQL=SQL.concat(email);
+		User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+
+		return u;
 
 
-		return null;
+
 	}
 
 
