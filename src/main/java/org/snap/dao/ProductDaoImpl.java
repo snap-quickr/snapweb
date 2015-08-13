@@ -6,16 +6,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.snap.dao.*;
 
-
-
-
-
-
 public class ProductDaoImpl implements ProductDao{
-	
-	
+
+
 	private JdbcTemplate jdbcTemplate;
-	
+
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -23,10 +18,10 @@ public class ProductDaoImpl implements ProductDao{
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	
+
 
 	public List<Product> selectProductByLocation(int locationId) {
-		
+
 		String tableName="product_";
 		String id=String.valueOf(locationId);
 		tableName=tableName.concat(id);
@@ -36,10 +31,10 @@ public class ProductDaoImpl implements ProductDao{
 
 		List<Product> products = (List<Product>) jdbcTemplate.query(SQL,new ProductMapper());
 		return products;
-		
-	
+
+
 	}
-	
-	
+
+
 
 }
