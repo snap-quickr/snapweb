@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.snap.dao.Product"%>
+<%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Electronix Store</title>
@@ -99,7 +101,7 @@
     </div>
     <!-- end of left content -->
     <div class="center_content">
-      <div class="center_title_bar">Latest Products</div>
+      <div class="center_title_bar">Your search for <%= request.getParameter("q") %></div>
       <div class="prod_box">
         <div class="top_prod_box"></div>
         <div class="center_prod_box">
@@ -110,7 +112,8 @@
         <div class="bottom_prod_box"></div>
         <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
       </div>
-      <div class="prod_box">
+      <% ArrayList<Product> result = (ArrayList<Product>)request.getAttribute("result"); %>
+      <!-- <div class="prod_box">
         <div class="top_prod_box"></div>
         <div class="center_prod_box">
           <div class="product_title"><a href="details.html">Iphone Apple</a></div>
@@ -190,7 +193,7 @@
         </div>
         <div class="bottom_prod_box"></div>
         <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
+      </div> -->
     </div>
     <!-- end of center content -->
     <div class="right_content">
