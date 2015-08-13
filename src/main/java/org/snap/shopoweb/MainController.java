@@ -10,7 +10,8 @@ public class MainController {
     
     @RequestMapping("/home")
     public String homePage(ModelMap model){
-       // model.addAttribute("toDo",DataContainer.getHm().get("home"));
+
+        model.addAttribute("message","Hello vivek");
         return "Hello";
     }
     
