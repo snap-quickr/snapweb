@@ -8,8 +8,6 @@ public class User {
 	String userPassword;
 	String userContact;
 	
-	
-	
 	public int getUserId() {
 		return userId;
 	}

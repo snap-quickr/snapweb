@@ -6,8 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.snap.dao.*;
 
-
-
 public class UserDaoImpl implements UserDao {
 
 
@@ -25,17 +23,12 @@ public class UserDaoImpl implements UserDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-
-
-
-	public void addUserProduct(int userId,Product p)
-	{
+	public void addUserProduct(int userId,Product p){
 		String userTableName="user_";
 		String id=String.valueOf(userId);
 		userTableName=userTableName.concat(id);
 		user_product_insert=user_product_insert.concat(userTableName);
 		user_product_insert=user_product_insert.concat(" values(?,?)");
-
 
 		String productTableName="product_";
 		String locationId=String.valueOf(p.getLocationId());
@@ -43,14 +36,16 @@ public class UserDaoImpl implements UserDao {
 
 		this.jdbcTemplate.update(this.user_product_insert,new Object[]{p.getProductId(),productTableName});
 
-
 		product_insert=product_insert.concat(productTableName);
 		product_insert=product_insert.concat(" values(?,?,?,?)");
 		this.jdbcTemplate.update(this.product_insert,new Object[]{p.getProductId(),p.getCategoryId(),p.getUrl(),p.getProductDetail()});
-
 	}
-
-
+	
+	public int getMaxUserId(){
+	    String sql = "select max(userId) from user";
+	    int id = jdbcTemplate.queryForObject(sql, Integer.class);
+	    return id;
+	}
 
 	public void saveUser(User u) 
 	{
@@ -66,10 +61,6 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-
-
-
-
 	//	public List<Product> getUserAddedProduct(String userId)
 	//	{
 	//		
@@ -83,21 +74,10 @@ public class UserDaoImpl implements UserDao {
 	//		return null;
 	//	}
 
-	public User getUser(String email)
-	{
-
+	public User getUser(String email){
 		String SQL="select * from user where userEmail=";
-
 		SQL=SQL.concat(email);
 		User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
-
 		return u;
-
-
-
 	}
-
-
-
-
 }
