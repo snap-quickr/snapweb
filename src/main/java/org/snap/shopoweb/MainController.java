@@ -1,6 +1,7 @@
 package org.snap.shopoweb;
 
-import java.io.IOException;
+
+/*import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,10 @@ import javax.xml.ws.Response;
 
 import org.omg.CORBA.Request;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;*/
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,27 +25,28 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
     
-    @RequestMapping("/home")
+    @RequestMapping("/asearch")
     public String homePage(ModelMap model){
-        model.addAttribute("message","Hello vivek");
-        return "Hello";
+    	
+        model.addAttribute("product","Hello vivek");
+        return "details";
     }
     
     @RequestMapping("/login")
     public String loginPage(ModelMap model){
-        model.addAttribute("message","Hello Spring");
-        return "Hello";
+        //model.addAttribute("toDo",DataContainer.getHm().get("login"));
+    	
+        return "login";
     }
     
     @RequestMapping("/product")
-    public String productPage(ModelMap model){
-        model.addAttribute("message","Hello Spring");
-        return "Hello";
+    public ModelAndView productPage(ModelMap model){
+       return new ModelAndView("details");
     }
     
     @RequestMapping("/user")
     public String userPage(ModelMap model){
-        model.addAttribute("message","Hello Spring");
+        //model.addAttribute("toDo",DataContainer.getHm().get("register"));
         return "Hello";
     }
     
@@ -60,5 +65,21 @@ public class MainController {
     	
         return model;*/
     //}
+
+    @RequestMapping("/add")
+    public String addPage(ModelMap model){
+        //model.addAttribute("toDo",DataContainer.getHm().get("addpro"));
+        return "Hello";
+    }
+    @RequestMapping("/validate")
+    public String validateLogin(ModelMap model)
+    {	
+    	return "home";
+    }
+    
+    @RequestMapping("/product")
+    public ModelAndView showProduct(HttpServletRequest req, HttpServletResponse res){
+    	return new ModelAndView("product");
+    }
 
 }
