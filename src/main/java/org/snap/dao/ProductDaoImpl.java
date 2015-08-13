@@ -34,7 +34,26 @@ public class ProductDaoImpl implements ProductDao{
 
 
 	}
+<<<<<<< HEAD
 
 
+=======
+	
+	public Product selectProductByLocationAndProductId(int locationId, int productId){
+	    Product product = new Product();
+	    String tableName="product_";
+	    String id=String.valueOf(locationId);
+	    tableName=tableName.concat(id);
+	    
+	    String SQL = "select * from ";
+	    
+	    SQL = SQL.concat(tableName);
+	    SQL = SQL.concat(" where productId = ?");
+	    
+	    product = (Product)jdbcTemplate.queryForObject(SQL, new ProductMapper());
+	    
+	    return product;
+	 }
+>>>>>>> origin/master
 
 }
