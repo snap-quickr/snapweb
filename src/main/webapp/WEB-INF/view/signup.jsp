@@ -11,19 +11,19 @@
 <script type="text/javascript" src="js/boxOver.js"></script>
 <script type="text/javascript">
   function validate(form) {
-    if (form.password.value == "" || form.re_password.value == "") {
+    if (form.pass1.value == "" || form.pass2.value == "") {
       alert("Error: please enter your password");
       form.pwd.focus();
       return false;
     }
 
-    if (form.password.value != form.re_password.value) {
+    if (form.pass1.value != form.pass2.value) {
       alert("Error: Passowrd entered are not same");
       form.pwd.focus();
       return false;
     }
 
-    if (form.password.value.length < 6) {
+    if (form.pass1.value.length < 6) {
       alert("Error: Password must have at least six characters!");
       form.pwd.focus();
       return false;
@@ -97,9 +97,9 @@
           <center>
           <h4>Register</h4>
           <form action="home.htm" method="post" onsubmit="return validate(this);">
-            <div class="signup_labels">Username</div> <input type="text" name="username" class="signup_input"/><br/>
-            <div class="signup_labels">Password</div> <input type="password" name="password" class="signup_input"/><br/>
-            <div class="signup_labels">Confirm</div> <input type="password" name="re_password" class="signup_input"/><br/>
+            <div class="signup_labels">Username</div> <input type="text" name="name" class="signup_input"/><br/>
+            <div class="signup_labels">Password</div> <input type="password" name="pass1" class="signup_input"/><br/>
+            <div class="signup_labels">Confirm</div> <input type="password" name="pass2" class="signup_input"/><br/>
             <div class="signup_labels">Email</div> <input type="text" name="email" class="signup_input"/><br/>
             <div class="signup_labels">Contact</div> <input type="text" name="contact" class="signup_input"/><br/>
             <input type="hidden" name="source" value="signup"/>

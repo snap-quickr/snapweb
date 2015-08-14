@@ -55,13 +55,13 @@ public class UserDaoImpl implements UserDao {
     {
         this.jdbcTemplate.update(this.user_insert,new Object[]{u.getUserId(),u.getUserName(),u.getUserEmail(),u.getUserPassword(),u.getUserContact()});
 
-        String tableName="user_";
-        String id=String.valueOf(u.getUserId());
-        tableName=tableName.concat(id);
-
-        user_product_table=user_product_table.concat(tableName);
-        user_product_table=user_product_table.concat("(productId int,referencedTable varchar(30))");
-        this.jdbcTemplate.update(this.user_product_table);
+//        String tableName="user_";
+//        String id=String.valueOf(u.getUserId());
+//        tableName=tableName.concat(id);
+//
+//        user_product_table=user_product_table.concat(tableName);
+//        user_product_table=user_product_table.concat("(productId int,referencedTable varchar(30))");
+//        this.jdbcTemplate.update(this.user_product_table);
 
     }
 
