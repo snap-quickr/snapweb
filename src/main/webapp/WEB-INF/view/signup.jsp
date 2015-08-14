@@ -8,35 +8,34 @@
 <script type="text/javascript" src="js/windowopen.js"></script>
 <script type="text/javascript" src="js/boxOver.js"></script>
 <script type="text/javascript">
-  function validate(form) {
-    if (form.pass1.value == "" || form.pass2.value == "") {
+function validate(form) {
+    if (form.pass1.value == "" || form.pass2.value == ""|| form.name.value == "") {
       alert("Error: please enter your password");
-      form.pwd.focus();
       return false;
     }
 
     if (form.pass1.value != form.pass2.value) {
       alert("Error: Passowrd entered are not same");
-      form.pwd.focus();
       return false;
     }
 
     if (form.pass1.value.length < 6) {
       alert("Error: Password must have at least six characters!");
-      form.pwd.focus();
       return false;
     }
 
     if (form.email.value == "") {
       alert("Error: enter your email!");
-      form.email.focus();
       return false;
     }
-
+    re2 = /^[0-9]{10,12}$/;
+    if (!re2.test(form.contact.value)) {
+      alert("Error: Invalid format for contact!");
+      return false;
+    }
     re2 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!re2.test(form.email.value)) {
       alert("Error: Invalid format for email!");
-      form.email.focus();
       return false;
     }
     return true;

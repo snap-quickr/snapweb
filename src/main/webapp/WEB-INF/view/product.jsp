@@ -23,7 +23,7 @@
     </div>
 
     <div id="header">
-      <div id="logo"> <a href="#"><img src="images/logo.png" alt="" border="0" width="237" height="140" /></a> </div>
+      <div id="logo"> <a href="#"><img src="images/eMart2.jpg" alt="" border="0" width="237" height="140" /></a> </div>
       <div class="oferte_content">
         <div class="top_divider"><img src="images/header_divider.png" alt="" width="1" height="164" /></div>
       </div>
@@ -77,7 +77,7 @@
               Location: <span class="blue"><%= product.getLocationId() %></span><br />
             </div>
             <div class="prod_price_big"><span class="price"><%= product.getPrice() %></span></div>
-            <a href="#" class="addtocart">add to cart</a> <a href="productSeller.htm?userId=<%= product.getUserId() %>" class="compare">Buy</a>
+            <a href="#" class="addtocart">add to cart</a> <a href="seller.htm?userId=<%= product.getUserId() %>" class="compare">Buy</a>
           </div>
         </div>
         <div class="desc_big_box">

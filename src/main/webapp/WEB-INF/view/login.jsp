@@ -11,33 +11,22 @@
 <script type="text/javascript" src="js/windowopen.js"></script>
 <script type="text/javascript" src="js/boxOver.js"></script>
 <script type="text/javascript">
-    function validate(form) {
-      if (form.password.value == "") {
-        alert("Error: please enter your password");
-        form.pwd.focus();
-        return false;
-      }
-  
-      if (form.password.value.length < 6) {
-        alert("Error: Password must have at least six characters!");
-        form.pwd.focus();
-        return false;
-      }
-  
-      if (form.email.value == "") {
-        alert("Error: enter your email!");
-        form.email.focus();
-        return false;
-      }
-  
-      re2 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-      if (!re2.test(form.email.value)) {
-        alert("Error: Invalid format for email!");
-        form.email.focus();
-        return false;
-      }
-      return true;
+function validate(form) {
+    if (form.password.value == "") {
+      alert("Error: please enter your password");
+      return false;
     }
+
+    
+
+    if (form.email.value == "") {
+      alert("Error: enter your email!");
+      return false;
+    }
+
+    
+    return true;
+  }
 </script>
 </head>
 <body>
@@ -60,25 +49,19 @@
 		</div>
 		<div id="main_content">
 			<div id="menu_tab">
-				<div class="left_menu_corner"></div>
-				<ul class="menu">
-					<li><a href="#" class="nav1" id=""> Home</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav2">Products</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav3">Specials</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav4">My account</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav4">Sign Up</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav5">Shipping</a></li>
-					<li class="divider"></li>
-					<li><a href="contact.html" class="nav6">Contact Us</a></li>
-					<li class="divider"></li>
-				</ul>
-				<div class="right_menu_corner"></div>
-			</div>
+		        <ul class="menu">
+		          <li><a href="home.htm" class="nav1" id="">Home</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="signup.htm" class="nav2">Sign up</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="login.htm" class="nav3">Login</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="user.htm?userId=1" class="nav4">My account</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="contact.html" class="nav6">Contact Us</a></li>
+		          <!-- <li class="divider"></li> -->
+		        </ul>
+      		</div>
 			<!-- end of menu tab -->
 			<div class="center_content">
 				<div class="center_login_content">
