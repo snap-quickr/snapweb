@@ -3,10 +3,12 @@
 <head>
 <title>Electronix Store - Details</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="iecss.css" />
-<![endif]-->
+<%-- <%
+String url=application.getRealPath("/");
+url=url+"/WEB-INF/view/css/style.css";
+out.println(url);
+%> --%>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script type="text/javascript" src="js/windowopen.js"></script>
 <script type="text/javascript" src="js/boxOver.js"></script>
 <script type="text/javascript">

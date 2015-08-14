@@ -1,5 +1,8 @@
 package org.snap.shopoweb.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.jdbc.core.*;
 import org.snap.shopoweb.beans.Product;
 import org.snap.shopoweb.beans.User;
@@ -55,13 +58,13 @@ public class UserDaoImpl implements UserDao {
     {
         this.jdbcTemplate.update(this.user_insert,new Object[]{u.getUserId(),u.getUserName(),u.getUserEmail(),u.getUserPassword(),u.getUserContact()});
 
-//        String tableName="user_";
-//        String id=String.valueOf(u.getUserId());
-//        tableName=tableName.concat(id);
-//
-//        user_product_table=user_product_table.concat(tableName);
-//        user_product_table=user_product_table.concat("(productId int,referencedTable varchar(30))");
-//        this.jdbcTemplate.update(this.user_product_table);
+        //        String tableName="user_";
+        //        String id=String.valueOf(u.getUserId());
+        //        tableName=tableName.concat(id);
+        //
+        //        user_product_table=user_product_table.concat(tableName);
+        //        user_product_table=user_product_table.concat("(productId int,referencedTable varchar(30))");
+        //        this.jdbcTemplate.update(this.user_product_table);
 
     }
 
@@ -83,5 +86,33 @@ public class UserDaoImpl implements UserDao {
         SQL=SQL.concat("'"+email+"'");
         User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
         return u;
+    }
+
+    public User getUserById(int userId){
+        String SQL="select * from user where userId=";
+        SQL=SQL.concat(String.valueOf(userId));
+        User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+        return u;
+    }
+
+    public List<Product> getUserAddedProducts(int userId) {
+        String tableName="";
+        List<Product> products = new ArrayList<Product>();
+        List<Product> p=null;
+        for(int i=1 ; i<=10 ; i++) {
+            tableName="product_";
+            String locationId=String.valueOf(i);
+            tableName=tableName.concat(locationId);
+            String SQL="select * from ";
+            SQL=SQL.concat(tableName);
+            SQL=SQL.concat(" where userId=");
+            String uId=String.valueOf(userId);
+            SQL=SQL.concat(uId);
+            p= (List<Product>) jdbcTemplate.query(SQL,new ProductMapper());
+            // if(p!=null)
+            products.addAll(p);
+        }
+
+        return products;
     }
 }

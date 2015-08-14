@@ -1,7 +1,11 @@
 package org.snap.shopoweb.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.snap.shopoweb.beans.*;
 
@@ -29,15 +33,10 @@ public class ProductDaoImpl implements ProductDao{
         List<Product> products = (List<Product>) jdbcTemplate.query(SQL,new ProductMapper());
         return products;
     }
-
+    
     public Product getProductsByLocationAndProductId(int locationId, int productId){
         Product product = new Product();
-        String tableName="product_";
-        String id=String.valueOf(locationId);
-        tableName=tableName.concat(id);
-        String SQL = "select * from ";
-        SQL = SQL.concat(tableName);
-        SQL = SQL.concat(" where productId = ?");
+        String SQL = "select * from product_"+locationId+" where productId ='"+productId+"'";
         product = (Product)jdbcTemplate.queryForObject(SQL, new ProductMapper());
         return product;
     }
@@ -52,6 +51,18 @@ public class ProductDaoImpl implements ProductDao{
             return 0;
         }
         return id;
+    }
+    
+    public HashMap<String,List<Product>> getAllProducts(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
+        LocationDao locationDao = (LocationDao) context.getBean("locationDao");
+        List<Location> listLoc = locationDao.getAllLocations();
+        HashMap<String,List<Product>> hashMap = new HashMap<String, List<Product>>();
+        for(Location loc:listLoc){
+            hashMap.put(loc.getLocationName(), this.getProductsByLocation(loc.getLocationId()));
+        }
+        ((ConfigurableApplicationContext)context).close();
+        return hashMap;
     }
     
     public void addProduct(Product p){

@@ -6,5 +6,5 @@ public interface UserDao {
 	
 	void saveUser(User u);
 	void addUserProduct(int userId,Product p);
-
+	public User getUserById(int userId);
 }

@@ -24,31 +24,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProductController {    
-    
+
     @RequestMapping("/add.htm")
     public ModelAndView addPage(HttpServletRequest request, HttpServletResponse response){
-        
+
         if(request.getParameter("userId")==null){
             ModelAndView mView = new ModelAndView("errorPage");
             mView.addObject("message", "You need to be logged in to add a product!");
             return mView;
         }
-        
+
         ModelAndView mView = new ModelAndView("add");
-        
+
         ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
         LocationDao locationDao = (LocationDao) context.getBean("locationDao");
         List<Location> locations = locationDao.getAllLocations();
-        
+
         CategoryDao categoryDao = (CategoryDao) context.getBean("categoryDao");
         List<Category> categories = categoryDao.getAllCategories();
-        
+
         mView.addObject("locations", locations);
         mView.addObject("categories", categories);        
         mView.addObject("userId", request.getParameter("userId"));
-        
+
         ((ConfigurableApplicationContext)context).close();
-        
+
         /*ProductDaoImpl pdi = (ProductDaoImpl) context.getBean("productDao");
         UserDaoImpl  udi = (UserDaoImpl) context.getBean("userDao");
         System.out.println(product.getProductName());
@@ -57,10 +57,10 @@ public class ProductController {
         udi.addUserProduct(1, product);*/            
         return mView;
     }
-    
+
     @RequestMapping("/saveProduct.htm")
     public ModelAndView saveProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        
+
         ModelAndView mView = new ModelAndView("home");        
         ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
 
@@ -71,11 +71,26 @@ public class ProductController {
         product.setPrice(Integer.parseInt(request.getParameter("price")));
         product.setProductDetail((request.getParameter("productDetail")));
         product.setUserId(Integer.parseInt(request.getParameter("userId")));
-                
+
         ProductDao productDao = (ProductDao) context.getBean("productDao");
         productDao.addProduct(product);        
-        
+
         ((ConfigurableApplicationContext)context).close();
+        return mView;
+    }
+
+    @RequestMapping("/showProduct.htm")
+    public ModelAndView getProductsByLocationAndProductId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        ModelAndView mView = new ModelAndView("product");        
+        ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
+
+        int pid=Integer.parseInt(request.getParameter("productId"));
+        int lid=Integer.parseInt(request.getParameter("locationId"));
+
+        ProductDao productDao = (ProductDao) context.getBean("productDao");
+        Product product = productDao.getProductsByLocationAndProductId(lid,pid);       
+        request.setAttribute("product",product );
+
         return mView;
     }
 }
