@@ -4,7 +4,7 @@
 <title>Electronix Store - Details</title>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252" />
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--[if IE 6]>
 <link rel="stylesheet" type="text/css" href="iecss.css" />
 <![endif]-->

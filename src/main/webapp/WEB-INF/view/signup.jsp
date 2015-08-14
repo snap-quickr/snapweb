@@ -1,13 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.snap.shopoweb.beans.User"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Electronix Store - Details</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-<%-- <%
-String url=application.getRealPath("/");
-url=url+"/WEB-INF/view/css/style.css";
-out.println(url);
-%> --%>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <script type="text/javascript" src="js/windowopen.js"></script>
 <script type="text/javascript" src="js/boxOver.js"></script>
@@ -64,24 +60,18 @@ out.println(url);
     </div>
   <div id="main_content">
       <div id="menu_tab">
-        <div class="left_menu_corner"></div>
         <ul class="menu">
-          <li><a href="#" class="nav1" id=""> Home</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav2">Products</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav3">Specials</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav4">My account</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav4">Sign Up</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav5">Shipping</a></li>
-          <li class="divider"></li>
+          <li><a href="home.htm" class="nav1" id="">Home</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="signup.htm" class="nav2">Sign up</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="login.htm" class="nav3">Login</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="user.htm?userId=1" class="nav4">My account</a></li>
+          <!-- <li class="divider"></li> -->
           <li><a href="contact.html" class="nav6">Contact Us</a></li>
-          <li class="divider"></li>
+          <!-- <li class="divider"></li> -->
         </ul>
-        <div class="right_menu_corner"></div>
       </div>
       <!-- end of menu tab -->
       <div class="center_content">

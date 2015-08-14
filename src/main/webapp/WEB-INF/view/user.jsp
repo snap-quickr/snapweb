@@ -20,7 +20,7 @@
 			<div class="top_offers"><marquee><h1>Get exciting offers at ShopoWEb...!<h1/></marquee></div>
 		</div>
 
-		<div id="header">
+		<!-- <div id="header">
 			<div id="logo">
 				<a href="#"><img src="images/logo.png" alt="" border="0"
 					width="237" height="140" /></a>
@@ -30,29 +30,23 @@
 					<img src="images/header_divider.png" alt="" width="1" height="164" />
 				</div>
 			</div>
-			<!-- end of oferte_content-->
-		</div>
+			end of oferte_content
+		</div> -->
 		<div id="main_content">
 			<div id="menu_tab">
-				<div class="left_menu_corner"></div>
-				<ul class="menu">
-					<li><a href="#" class="nav1" id=""> Home</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav2">Products</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav3">Specials</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav4">My account</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav4">Sign Up</a></li>
-					<li class="divider"></li>
-					<li><a href="#" class="nav5">Shipping</a></li>
-					<li class="divider"></li>
-					<li><a href="contact.html" class="nav6">Contact Us</a></li>
-					<li class="divider"></li>
-				</ul>
-				<div class="right_menu_corner"></div>
-			</div>
+		        <ul class="menu">
+		          <li><a href="home.htm" class="nav1" id="">Home</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="signup.htm" class="nav2">Sign up</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="login.htm" class="nav3">Login</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="user.htm?userId=1" class="nav4">My account</a></li>
+		          <!-- <li class="divider"></li> -->
+		          <li><a href="contact.html" class="nav6">Contact Us</a></li>
+		          <!-- <li class="divider"></li> -->
+		        </ul>
+      		</div>
 			<!-- end of menu tab -->
 			<div class="center_content">
 				<div class="center_signup_content">
@@ -74,12 +68,12 @@
 		</div>
 		<!-- end of main content -->
 		<div class="footer">
-			<div class="left_footer">
+			<!-- <div class="left_footer">
 				<img src="images/footer_logo.png" alt="" width="170" height="49" />
-			</div>
+			</div> -->
 			<div class="center_footer">
-				&copy; Copyright Team ShopoWeb Inc.<br /> <br /> <img
-					src="images/payment.gif" alt="" />
+				&copy; Copyright Team ShopoWeb Inc.<br /> <br /> 
+				<!-- <img	src="images/payment.gif" alt="" /> -->
 			</div>
 			<div class="right_footer">
 				<a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a

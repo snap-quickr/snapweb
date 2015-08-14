@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/boxOver.js"></script>
 </head>
 <body>
-<% Product product = (Product)request.getAttribute("product"); %>
+<% Product product = (Product)request.getAttribute("product");%>
 <div id="main_container">
     <div class="top_bar">
       <div class="top_offers">
@@ -31,24 +31,18 @@
     </div>
   <div id="main_content">
       <div id="menu_tab">
-        <div class="left_menu_corner"></div>
         <ul class="menu">
-          <li><a href="#" class="nav1" id=""> Home</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav2">Products</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav3">Specials</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav4">My account</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav4">Sign Up</a></li>
-          <li class="divider"></li>
-          <li><a href="#" class="nav5">Shipping</a></li>
-          <li class="divider"></li>
+          <li><a href="home.htm" class="nav1" id="">Home</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="signup.htm" class="nav2">Sign up</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="login.htm" class="nav3">Login</a></li>
+          <!-- <li class="divider"></li> -->
+          <li><a href="user.htm?userId=1" class="nav4">My account</a></li>
+          <!-- <li class="divider"></li> -->
           <li><a href="contact.html" class="nav6">Contact Us</a></li>
-          <li class="divider"></li>
+          <!-- <li class="divider"></li> -->
         </ul>
-        <div class="right_menu_corner"></div>
       </div>
       <!-- end of menu tab -->
 <!--       <div class="crumb_navigation"> Navigation: <span class="current">Home</span> </div> -->
@@ -83,7 +77,7 @@
               Location: <span class="blue"><%= product.getLocationId() %></span><br />
             </div>
             <div class="prod_price_big"><span class="price"><%= product.getPrice() %></span></div>
-            <a href="#" class="addtocart">add to cart</a> <a href="productSeller.htm?userId= <%= product.getUserId() %>" class="compare">Buy</a>
+            <a href="#" class="addtocart">add to cart</a> <a href="productSeller.htm?userId=<%= product.getUserId() %>" class="compare">Buy</a>
           </div>
         </div>
         <div class="desc_big_box">
