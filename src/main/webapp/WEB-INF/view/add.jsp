@@ -1,4 +1,4 @@
-<%@page import="org.snap.shopoweb.beans.Location"%>
+	<%@page import="org.snap.shopoweb.beans.Location"%>
 <%@page import="org.snap.shopoweb.beans.Category"%>
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
