@@ -39,11 +39,11 @@ public class Handler {
 		/* User u=userdao.getUser(2);
 		 System.out.println(u.userName);*/
 		 
-		 List<Product> p = productDao.selectProductByLocation(1);
+		 List<Product> p = productDao.getProductsByLocation(1);
 		 
 		 for(Product x:p)
 		 {
-			 System.out.println(x.getUrl());
+			 //System.out.println(x.getUrl());
 		 }
 		 
 
