@@ -86,6 +86,7 @@ function validate(form) {
         </div> -->
         <div class="center_signup_content">
           <center>
+          <%= (String)request.getAttribute("state") %>
           <h4>Register</h4>
           <form action="home.htm" method="post" onsubmit="return validate(this);">
             <div class="signup_labels">Username</div> <input type="text" name="name" class="signup_input"/><br/>

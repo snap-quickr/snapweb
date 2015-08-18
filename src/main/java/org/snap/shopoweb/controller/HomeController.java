@@ -34,13 +34,20 @@ public class HomeController {
         context = new ClassPathXmlApplicationContext("jdbc.xml");
         
         if(request.getParameter("source")!=null) {
-            if(request.getParameter("source").equals("signup")){
-                User user = new User();
+            if(request.getParameter("source").equals("signup")){                    
+                UserDaoImpl userdao = (UserDaoImpl)context.getBean("userDao");
+                User user=userdao.getUser(request.getParameter("email"));
+                if(user!=null)
+                {
+                	ModelAndView mView2 = new ModelAndView("login");
+                    mView2.addObject("state", "you look familier, try logging in");
+                    return mView2;
+                }
+                user = new User();
                 user.setUserName(request.getParameter("name"));
                 user.setUserEmail(request.getParameter("email"));
                 user.setUserPassword(request.getParameter("pass1"));
-                user.setUserContact(request.getParameter("contact"));                                
-                UserDaoImpl userdao = (UserDaoImpl)context.getBean("userDao");
+                user.setUserContact(request.getParameter("contact"));            
                 user.setUserId(userdao.getMaxUserId()+1);
                 userdao.saveUser(user);                
     
@@ -52,9 +59,9 @@ public class HomeController {
                 UserDaoImpl userdao = (UserDaoImpl)context.getBean("userDao");                        
                 
                 User user = userdao.getUser(email); 
-                if(user!=null&&!user.getUserPassword().equals(password)){
+                if(user==null||!user.getUserPassword().equals(password)){
                     ModelAndView mView2 = new ModelAndView("login");
-                    mView2.addObject("state", "wrong-password");
+                    mView2.addObject("state", "wrong user name or password");
                     return mView2;
                 }                                               
                 

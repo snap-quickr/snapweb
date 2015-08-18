@@ -3,6 +3,7 @@ package org.snap.shopoweb.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.*;
 import org.snap.shopoweb.beans.Product;
 import org.snap.shopoweb.beans.User;
@@ -82,16 +83,28 @@ public class UserDaoImpl implements UserDao {
     //	}
 
     public User getUser(String email){
-        String SQL="select * from user where userEmail=";
-        SQL=SQL.concat("'"+email+"'");
-        User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+        User u;
+		try {
+			String SQL="select * from user where userEmail=";
+			SQL=SQL.concat("'"+email+"'");
+			u = (User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			u=null;
+		}
         return u;
     }
 
     public User getUserById(int userId){
-        String SQL="select * from user where userId=";
-        SQL=SQL.concat(String.valueOf(userId));
-        User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+        User u;
+		try {
+			String SQL="select * from user where userId=";
+			SQL=SQL.concat(String.valueOf(userId));
+			u = (User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			u=null;
+		}
         return u;
     }
 
