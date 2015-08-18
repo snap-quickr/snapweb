@@ -1,5 +1,6 @@
 package org.snap.shopoweb.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,4 +72,19 @@ public class ProductDaoImpl implements ProductDao{
         jdbcTemplate.update(sql, new Object[]{id, p.getProductName(),
                 p.getProductDetail(), p.getPrice(),p.getCategoryId(),p.getLocationId(),p.getUserId()});
     }
+
+	public ArrayList<Product> search(String searchStr,int locationId) {
+		// TODO Auto-generated method stub
+		List<Product> products=getProductsByLocation(locationId);
+		ArrayList<Product> returnResult=new ArrayList<>();
+		for(String str:searchStr.split(" "))
+		{
+			for(Product product:products)
+			{
+				if(product.getProductName().contains(str)||product.getProductDetail().contains(str))
+				returnResult.add(product);
+			}
+		}
+		return returnResult;
+	}
 }

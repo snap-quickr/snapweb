@@ -70,12 +70,12 @@ function validate(form) {
 						<form action="home.htm" method="post"
 							onsubmit="return validate(this);">
 							<div class="login_labels">Email</div>
-							<input type="text" name="email" class="login_input"><br />
+							<input type="text" name="email" class="login_input"/><br />
 							<div class="login_labels">Password</div>
-							<input type="password" name="password" class="login_input"><br />
+							<input type="password" name="password" class="login_input"/><br />
 							<input type="hidden" name="source" value="login"/>
 							<input type="submit" value="Login"
-								style="float: left; width: 20%; margin-top: 1%; margin-bottom: 1%; margin-left: 40%; margin-right: 40%; background: #0097A7; border: none; padding-top: 1%; padding-bottom: 1%; color: #fff;">
+								style="float: left; width: 20%; margin-top: 1%; margin-bottom: 1%; margin-left: 40%; margin-right: 40%; background: #0097A7; border: none; padding-top: 1%; padding-bottom: 1%; color: #fff;"/>
 						</form>							
 					</center>
 				</div>
