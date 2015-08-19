@@ -2,7 +2,8 @@
 <%@page
 	import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="org.snap.shopoweb.dao.LocationDao"%>
 <%@page import="org.snap.shopoweb.beans.Product"%>
 <%@page import="java.util.HashMap"%>
@@ -17,7 +18,7 @@
 <script type="text/javascript" src="js/boxOver.js"></script>
 <% 
     ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
-		ArrayList<Product> arrListProd=(ArrayList<Product>)request.getAttribute("searchRes");
+		HashSet<Product> arrListProd=(HashSet<Product>)request.getAttribute("searchRes");
 		LocationDao locDao= (LocationDao)context.getBean("locationDao");
         
 		List<Location> locations=locDao.getAllLocations();
@@ -64,7 +65,9 @@
 		</div>
 		<div class="center_content">
 			<% 
-      	    for(Product p: arrListProd){
+			Iterator<Product> itr = arrListProd.iterator();
+			while(itr.hasNext()){
+			Product p=itr.next();
       	%>
 			<div class="prod_box">
 				<div class="top_prod_box"></div>

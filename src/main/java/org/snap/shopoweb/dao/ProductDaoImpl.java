@@ -1,15 +1,16 @@
 package org.snap.shopoweb.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
+import org.snap.shopoweb.beans.Location;
+import org.snap.shopoweb.beans.Product;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.snap.shopoweb.beans.*;
 
 public class ProductDaoImpl implements ProductDao{
 
@@ -79,10 +80,10 @@ public class ProductDaoImpl implements ProductDao{
                 p.getProductDetail(), p.getPrice(),p.getCategoryId(),p.getLocationId(),p.getUserId()});
     }
 
-	public ArrayList<Product> search(String searchStr,int locationId) {
+	public HashSet<Product> search(String searchStr,int locationId) {
 		// TODO Auto-generated method stub
 		List<Product> products=getProductsByLocation(locationId);
-		ArrayList<Product> returnResult=new ArrayList<>();
+		HashSet<Product> returnResult=new HashSet<>();
 		for(String str:searchStr.split(" "))
 		{
 			for(Product product:products)
@@ -91,6 +92,7 @@ public class ProductDaoImpl implements ProductDao{
 				returnResult.add(product);
 			}
 		}
+		
 		return returnResult;
 	}
 }
