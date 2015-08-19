@@ -1,263 +1,107 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="org.snap.shopoweb.beans.*"%>
-<%@page import="java.util.ArrayList"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@page import="org.snap.shopoweb.beans.Location"%>
+<%@page
+	import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.snap.shopoweb.dao.LocationDao"%>
+<%@page import="org.snap.shopoweb.beans.Product"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
-<title>Electronix Store</title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="iecss.css" />
-<![endif]-->
+<title>Shopo WEb</title>
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-1252" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 <script type="text/javascript" src="js/boxOver.js"></script>
+<% 
+    ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
+		HashSet<Product> arrListProd=(HashSet<Product>)request.getAttribute("searchRes");
+		LocationDao locDao= (LocationDao)context.getBean("locationDao");
+        
+		List<Location> locations=locDao.getAllLocations();
+	%>
 </head>
-<body>
-<div id="main_container">
-  <div class="top_bar">
-    <div class="top_search">
-      <div class="search_text"><a href="asearch">Advanced Search</a></div>
-      <input type="text" class="search_input" name="search" />
-      <input type="image" src="images/search.gif" class="search_bt"/>
-    </div>
-    <div class="languages">
-      <div class="lang_text">Languages:</div>
-      <a href="#" class="lang"><img src="images/en.gif" alt="" border="0" /></a> <a href="#" class="lang"><img src="images/de.gif" alt="" border="0" /></a> </div>
-  </div>
 
-  <div id="header">
-    <div id="logo"> <a href="#"><img src="images/logo.png" alt="" border="0" width="237" height="140" /></a> </div>
-    <div class="oferte_content">
-      <div class="top_divider"><img src="images/header_divider.png" alt="" width="1" height="164" /></div>
-      <div class="oferta">
-        <div class="oferta_content"> <img src="images/laptop.png" width="94" height="92" alt="" border="0" class="oferta_img" />
-          <div class="oferta_details">
-            <div class="oferta_title">Samsung GX 2004 LM</div>
-            <div class="oferta_text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </div>
-            <a href="details.html" class="details">details</a> </div>
-        </div>
-        <div class="oferta_pagination"> <span class="current">1</span> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> </div>
-      </div>
-      <div class="top_divider"><img src="images/header_divider.png" alt="" width="1" height="164" /></div>
-    </div>
-    <!-- end of oferte_content-->
-  </div>
-  
-  <div id="main_content">
-    <div id="menu_tab">
-      <div class="left_menu_corner"></div>
-      <ul class="menu">
-        <li><a href="#" class="nav1"> Home</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class="nav2">Products</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class="nav3">Specials</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class="nav4">My account</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class="nav4">Sign Up</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class="nav5">Shipping</a></li>
-        <li class="divider"></li>
-        <li><a href="contact.html" class="nav6">Contact Us</a></li>
-        <li class="divider"></li>
-        <li class="currencies">Currencies
-          <select>
-            <option>US Dollar</option>
-            <option>Euro</option>
-          </select>
-        </li>
-      </ul>
-      <div class="right_menu_corner"></div>
-    </div>
-    <!-- end of menu tab -->
-    <div class="crumb_navigation"> Navigation: <span class="current">Home</span> </div>
-    <div class="left_content">
-      <div class="title_box">Categories</div>
-      <ul class="left_menu">
-        <li class="odd"><a href="#">Processors</a></li>
-        <li class="even"><a href="#">Motherboards</a></li>
-        <li class="odd"><a href="#">Desktops</a></li>
-        <li class="even"><a href="#">Laptops &amp; Notebooks</a></li>
-        <li class="odd"><a href="#">Processors</a></li>
-        <li class="even"><a href="#">Motherboards</a></li>
-        <li class="odd"><a href="#">Processors</a></li>
-        <li class="even"><a href="#">Motherboards</a></li>
-        <li class="odd"><a href="#">Desktops</a></li>
-        <li class="even"><a href="#">Laptops &amp; Notebooks</a></li>
-        <li class="odd"><a href="#">Processors</a></li>
-        <li class="even"><a href="#">Motherboards</a></li>
-      </ul>
-      <div class="title_box">Special Products</div>
-      <div class="border_box">
-        <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-        <div class="product_img"><a href="details.html"><img src="images/laptop.png" alt="" border="0" /></a></div>
-        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-      </div>
-      <div class="title_box">Newsletter</div>
-      <div class="border_box">
-        <input type="text" name="newsletter" class="newsletter_input" value="your email"/>
-        <a href="#" class="join">join</a> </div>
-      <div class="banner_adds"> <a href="#"><img src="images/bann2.jpg" alt="" border="0" /></a> </div>
-    </div>
-    <!-- end of left content -->
-    <div class="center_content">
-      <div class="center_title_bar">Your search for <%= request.getParameter("q") %></div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/laptop.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <% ArrayList<Product> result = (ArrayList<Product>)request.getAttribute("result"); 
-      	for(Product product:result){
-      		%>
-      		<div class="prod_box">
-        		<div class="top_prod_box"></div>
-		        <div class="center_prod_box">
-		          <div class="product_title"><a href="details.html"><%= product.getProductId() %></a></div>
-		          <div class="product_img"><a href="details.html"><img src="images/laptop.gif" alt="" border="0" /></a></div>
-		          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-		        </div>
-        		<div class="bottom_prod_box"></div>
-        		<div class="prod_details_tab"> 
-        		<a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]">
-        			<img src="images/cart.gif" alt="" border="0" class="left_bt" />
-        		</a>
-        		<a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]">
-        			<img src="images/favs.gif" alt="" border="0" class="left_bt" />
-        		</a> 
-        		<a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]">
-        			<img src="images/favorites.gif" alt="" border="0" class="left_bt" />
-        		</a> 
-        		<a href="details.html" class="prod_details">details</a> </div>
-      		</div>
-      		<%
-      	}
-      %>
-      <!-- <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Iphone Apple</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p4.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Samsung Webcam</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p5.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/laptop.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Iphone Apple</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p4.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Samsung Webcam</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p5.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="center_title_bar">Recommended Products</div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/laptop.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Iphone Apple</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p4.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div>
-      <div class="prod_box">
-        <div class="top_prod_box"></div>
-        <div class="center_prod_box">
-          <div class="product_title"><a href="details.html">Samsung Webcam</a></div>
-          <div class="product_img"><a href="details.html"><img src="images/p5.gif" alt="" border="0" /></a></div>
-          <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-        </div>
-        <div class="bottom_prod_box"></div>
-        <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div>
-      </div> -->
-    </div>
-    <!-- end of center content -->
-    <div class="right_content">
-      <div class="shopping_cart">
-        <div class="cart_title">Shopping cart</div>
-        <div class="cart_details"> 3 items <br />
-          <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="#" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="images/shoppingcart.png" alt="" width="48" height="48" border="0" /></a></div>
-      </div>
-      <div class="title_box">What’s new</div>
-      <div class="border_box">
-        <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-        <div class="product_img"><a href="details.html"><img src="images/p2.gif" alt="" border="0" /></a></div>
-        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-      </div>
-      <div class="title_box">Manufacturers</div>
-      <ul class="left_menu">
-        <li class="odd"><a href="#">Sony</a></li>
-        <li class="even"><a href="#">Samsung</a></li>
-        <li class="odd"><a href="#">Daewoo</a></li>
-        <li class="even"><a href="#">LG</a></li>
-        <li class="odd"><a href="#">Fujitsu Siemens</a></li>
-        <li class="even"><a href="#">Motorola</a></li>
-        <li class="odd"><a href="#">Phillips</a></li>
-        <li class="even"><a href="#">Beko</a></li>
-      </ul>
-      <div class="banner_adds"> <a href="#"><img src="images/bann1.jpg" alt="" border="0" /></a> </div>
-    </div>
-    <!-- end of right content -->
-  </div>
-  <!-- end of main content -->
-  <div class="footer">
-    <div class="left_footer"> <img src="images/footer_logo.png" alt="" width="170" height="49"/> </div>
-    <div class="center_footer"> Template name. All Rights Reserved 2008<br />
-      <a href="http://csscreme.com"><img src="images/csscreme.jpg" alt="csscreme" border="0" /></a><br />
-      <img src="images/payment.gif" alt="" /> </div>
-    <div class="right_footer"> <a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a href="#">rss</a> <a href="contact.html">contact us</a> </div>
-  </div>
-</div>
-<!-- end of main_container -->
+<body>
+
+	<div id="main_container"></div>
+	<div class="top_bar">
+		<div class="top_offers">Get exciting offers!</div>
+	</div>
+	<div id="header">
+		<div id="logo">
+			<a href="#"><img src="images/logo.png" alt="" border="0"
+				width="237" height="140" /></a>
+		</div>
+		<div class="oferte_content">
+			<div class="top_divider">
+				<img src="images/header_divider.png" alt="" width="1" height="164" />
+			</div>
+			<form action="search.htm" method="post">
+				<select name="location">
+					<%for(Location loc:locations){ %>
+					<option value=<%= loc.getLocationId() %>><%= loc.getLocationName() %></option>
+					<%} %>
+				</select> <input type="search" name="toSearch" /> <input type="submit" />
+			</form>
+		</div>
+		<!-- end of oferte_content-->
+	</div>
+
+	<div id="main_content">
+		<div id="menu_tab">
+			<ul class="menu">
+				<li><a href="home.htm" class="nav1" id="">Home</a></li>
+				<li><a href="signup.htm" class="nav2">Sign up</a></li>
+				<li><a href="login.htm" class="nav3">Login</a></li>
+				<li><a href="user.htm?userId=${userId}" class="nav4">My
+						account</a></li>
+				<li><a href="add.htm?userId=${userId}" class="nav6">Add
+						Product</a></li>
+			</ul>
+		</div>
+		<div class="center_content">
+			<% 
+			Iterator<Product> itr = arrListProd.iterator();
+			while(itr.hasNext()){
+			Product p=itr.next();
+      	%>
+			<div class="prod_box">
+				<div class="top_prod_box"></div>
+				<div class="center_prod_box">
+					<div class="product_title">
+						<a
+							href="showProduct.htm?locationId=<%=p.getLocationId()%>&productId=<%=p.getProductId()%>">
+							<%=p.getProductName()%>
+						</a>
+					</div>
+					<div class="product_img">
+						<a href="details.html"><img src="images/laptop.gif" alt=""
+							border="0" /></a>
+					</div>
+					<div class="prod_price">
+						<span class="price"><%=p.getPrice()%></span>
+					</div>
+				</div>
+				<div class="bottom_prod_box"></div>
+				<!-- <div class="prod_details_tab"> <a href="#" title="header=[Add to cart] body=[&nbsp;] fade=[on]"><img src="images/cart.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Specials] body=[&nbsp;] fade=[on]"><img src="images/favs.gif" alt="" border="0" class="left_bt" /></a> <a href="#" title="header=[Gifts] body=[&nbsp;] fade=[on]"><img src="images/favorites.gif" alt="" border="0" class="left_bt" /></a> <a href="details.html" class="prod_details">details</a> </div> -->
+			</div>
+			<%
+      	}%>
+		</div>
+	</div>
+	<!-- end of main content -->
+	<div class="footer">
+		<div class="center_footer">
+			ShopoWeb. All Rights Reserved 2015<br />
+			<!-- <a href="http://csscreme.com"><img src="images/csscreme.jpg" alt="csscreme" border="0" /></a><br />
+	        <img src="images/payment.gif" alt="" /> </div> -->
+			<!-- <div class="right_footer"> <a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a href="#">rss</a> <a href="contact.html">contact us</a> </div> -->
+		</div>
+	</div>
+
 </body>
 </html>

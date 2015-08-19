@@ -1,13 +1,16 @@
 package org.snap.shopoweb.dao;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
+import org.snap.shopoweb.beans.Location;
+import org.snap.shopoweb.beans.Product;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.snap.shopoweb.beans.*;
 
 public class ProductDaoImpl implements ProductDao{
 
@@ -36,8 +39,13 @@ public class ProductDaoImpl implements ProductDao{
     
     public Product getProductsByLocationAndProductId(int locationId, int productId){
         Product product = new Product();
-        String SQL = "select * from product_"+locationId+" where productId ='"+productId+"'";
-        product = (Product)jdbcTemplate.queryForObject(SQL, new ProductMapper());
+        try {
+			String SQL = "select * from product_"+locationId+" where productId ='"+productId+"'";
+			product = (Product)jdbcTemplate.queryForObject(SQL, new ProductMapper());
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			product=null;
+		}
         return product;
     }
     
@@ -71,4 +79,16 @@ public class ProductDaoImpl implements ProductDao{
         jdbcTemplate.update(sql, new Object[]{id, p.getProductName(),
                 p.getProductDetail(), p.getPrice(),p.getCategoryId(),p.getLocationId(),p.getUserId()});
     }
+
+	public HashSet<Product> search(String searchStr,int locationId) {
+		List<Product> products=getProductsByLocation(locationId);
+		HashSet<Product> returnResult=new HashSet<>();
+		for(String str:searchStr.split(" ")){
+			for(Product product:products){
+				if(product.getProductName().contains(str)||product.getProductDetail().contains(str))
+				returnResult.add(product);
+			}
+		}		
+		return returnResult;
+	}
 }

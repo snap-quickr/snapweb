@@ -1,3 +1,8 @@
+<%@page import="org.snap.shopoweb.beans.Location"%>
+<%@page
+	import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.snap.shopoweb.dao.LocationDao"%>
 <%@page import="org.snap.shopoweb.beans.Product"%>
 <%@page import="java.util.HashMap"%>
@@ -11,27 +16,40 @@
     <script type="text/javascript" src="js/boxOver.js"></script>
     <% 
 		HashMap<String,List<Product>> hashMap = (HashMap<String,List<Product>>)request.getAttribute("allProducts"); 
+	    
+    	ApplicationContext context = new ClassPathXmlApplicationContext("jdbc.xml");
+		ArrayList<Product> arrListProd=(ArrayList<Product>)request.getAttribute("searchRes");
+		LocationDao locDao= (LocationDao)context.getBean("locationDao");
+		List<Location> locations = locDao.getAllLocations();
 	%>
   </head>
 
 <body>
     
-    <div id="main_container">
-	    <div class="top_bar">
-				<div class="top_offers">Get exciting offers!</div>
+    <div id="main_container"></div>
+    <div class="top_bar">
+			<div class="top_offers">Get exciting offers!</div>
+		</div>
+
+		<div id="header">
+			<div id="logo">
+				<a href="#"><img src="images/logo.png" alt="" border="0"
+					width="237" height="140" /></a>
 			</div>
-	
-			<div id="header">
-				<div id="logo">
-					<a href="#"><img src="images/logo.png" alt="" border="0"
-						width="237" height="140" /></a>
-				</div>
-				<div class="oferte_content">
-					<div class="top_divider">
-						<img src="images/header_divider.png" alt="" width="1" height="164" />
-					</div>
-				</div>
-				<!-- end of oferte_content-->
+			<div class="oferte_content">
+			<div class="top_divider">
+				<img src="images/header_divider.png" alt="" width="1" height="164" />
+			</div>
+			<form action="search.htm" method="post">
+				<select name="location">
+					<%for(Location loc:locations){ %>
+					<option value=<%= loc.getLocationId() %>><%= loc.getLocationName() %></option>
+					<%} %>
+				</select> <input type="search" name="toSearch" /> <input type="submit" />
+			</form>
+		</div>
+			<!-- end of oferte_content-->
+
 		</div>
 
 	    <div id="main_content">

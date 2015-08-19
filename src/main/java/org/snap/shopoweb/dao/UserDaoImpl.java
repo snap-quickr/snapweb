@@ -3,6 +3,7 @@ package org.snap.shopoweb.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.*;
 import org.snap.shopoweb.beans.Product;
 import org.snap.shopoweb.beans.User;
@@ -54,18 +55,9 @@ public class UserDaoImpl implements UserDao {
         return id;
     }
 
-    public void saveUser(User u) 
-    {
-        this.jdbcTemplate.update(this.user_insert,new Object[]{u.getUserId(),u.getUserName(),u.getUserEmail(),u.getUserPassword(),u.getUserContact()});
-
-        //        String tableName="user_";
-        //        String id=String.valueOf(u.getUserId());
-        //        tableName=tableName.concat(id);
-        //
-        //        user_product_table=user_product_table.concat(tableName);
-        //        user_product_table=user_product_table.concat("(productId int,referencedTable varchar(30))");
-        //        this.jdbcTemplate.update(this.user_product_table);
-
+    public void saveUser(User u){
+        this.jdbcTemplate.update(this.user_insert,new Object[]{u.getUserId(),
+                u.getUserName(),u.getUserEmail(),u.getUserPassword(),u.getUserContact()});
     }
 
     //	public List<Product> getUserAddedProduct(String userId)
@@ -81,17 +73,27 @@ public class UserDaoImpl implements UserDao {
     //		return null;
     //	}
 
-    public User getUser(String email){
-        String SQL="select * from user where userEmail=";
-        SQL=SQL.concat("'"+email+"'");
-        User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+    public User getUserByEmail(String email){
+        User u;
+		try {
+			String SQL="select * from user where userEmail=";
+			SQL=SQL.concat("'"+email+"'");
+			u = (User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+		} catch (DataAccessException e) {
+			u=null;
+		}
         return u;
     }
 
     public User getUserById(int userId){
-        String SQL="select * from user where userId=";
-        SQL=SQL.concat(String.valueOf(userId));
-        User u=(User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+        User u;
+		try {
+			String SQL="select * from user where userId=";
+			SQL=SQL.concat(String.valueOf(userId));
+			u = (User)this.jdbcTemplate.queryForObject(SQL,new UserMapper());
+		} catch (DataAccessException e) {
+			u=null;
+		}
         return u;
     }
 
