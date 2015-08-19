@@ -1,36 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Electronix Store - Details</title>
-<meta http-equiv="Content-Type"
-	content="text/html; charset=windows-1252" />
+<title>ShopoWeb</title>
+<meta http-equiv="Content-Type"	content="text/html; charset=windows-1252" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<!--[if IE 6]>
-<link rel="stylesheet" type="text/css" href="iecss.css" />
-<![endif]-->
-<script type="text/javascript" src="js/windowopen.js"></script>
-<script type="text/javascript" src="js/boxOver.js"></script>
-<script type="text/javascript">
-function validate(form) {
-    if (form.password.value == "") {
-      alert("Error: please enter your password");
-      return false;
-    }
-
-    
-
-    if (form.email.value == "") {
-      alert("Error: enter your email!");
-      return false;
-    }
-
-    
-    return true;
-  }
-</script>
+	<!--[if IE 6]>
+	<link rel="stylesheet" type="text/css" href="iecss.css" />
+	<![endif]-->
+	<script type="text/javascript" src="js/windowopen.js"></script>
+	<script type="text/javascript" src="js/boxOver.js"></script>
+	<script type="text/javascript">
+	function validate(form) {
+	    if (form.password.value == "") {
+	      alert("Error: please enter your password");
+	      return false;
+	    }		    	
+	    if (form.email.value == "") {
+	      alert("Error: enter your email!");
+	      return false;
+	    }		   
+	    return true;
+	  }
+	</script>
 </head>
 <body>
 	<div id="main_container">
+	
 		<div class="top_bar">
 			<div class="top_offers">Get exciting offers!</div>
 		</div>
@@ -47,6 +42,7 @@ function validate(form) {
 			</div>
 			<!-- end of oferte_content-->
 		</div>
+		
 		<div id="main_content">
 			<div id="menu_tab">
 		        <ul class="menu">
@@ -62,6 +58,7 @@ function validate(form) {
 		          <!-- <li class="divider"></li> -->
 		        </ul>
       		</div>
+      		
 			<!-- end of menu tab -->
 			<div class="center_content">
 				<div class="center_login_content">
@@ -82,19 +79,7 @@ function validate(form) {
 			</div>
 		</div>
 		<!-- end of main content -->
-		<div class="footer">
-			<div class="left_footer">
-				<img src="images/footer_logo.png" alt="" width="170" height="49" />
-			</div>
-			<div class="center_footer">
-				&copy; Copyright Team ShopoWeb Inc.<br /> <br /> <img
-					src="images/payment.gif" alt="" />
-			</div>
-			<div class="right_footer">
-				<a href="#">home</a> <a href="#">about</a> <a href="#">sitemap</a> <a
-					href="#">rss</a> <a href="contact.html">contact us</a>
-			</div>
-		</div>
+		<%@include file="footer.jsp"%> 		
 	</div>
 </body>
 </html>

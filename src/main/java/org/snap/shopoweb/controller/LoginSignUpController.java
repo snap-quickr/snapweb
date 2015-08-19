@@ -31,7 +31,7 @@ public class LoginSignUpController {
     
     @RequestMapping("/login.htm")
     public ModelAndView loginPage(ModelMap model){
-        ModelAndView mView = new ModelAndView("login");        
+        ModelAndView mView = new ModelAndView("login");
         return mView;
     }
     

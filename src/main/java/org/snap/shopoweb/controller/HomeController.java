@@ -12,9 +12,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("userId")
 public class HomeController {
     
     private ApplicationContext context;
@@ -49,8 +51,7 @@ public class HomeController {
                     ModelAndView mView2 = new ModelAndView("login");
                     mView2.addObject("state", "wrong-password");
                     return mView2;
-                }                                               
-                
+                }                                                               
                 mView.addObject("userId", user.getUserId());
                 mView.addObject("userName", user.getUserName());
             }

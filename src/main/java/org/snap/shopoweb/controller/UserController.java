@@ -23,18 +23,19 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("userId")
 public class UserController {    
     
     @RequestMapping("/user.htm")
     public ModelAndView showUser(HttpServletRequest request, HttpServletResponse response){
         
         if(request.getParameter("userId")==null){
-            ModelAndView mView = new ModelAndView("errorPage");
-            mView.addObject("message", "You need to be logged in to add a product!");
-            
+            ModelAndView mView = new ModelAndView("login");
+            mView.addObject("message", "Please login to view your account.");            
             return mView;
         }
         
